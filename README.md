@@ -7,14 +7,14 @@ other shared column is compared.
 ## Running it
 
 ```bash
-dotnet run --project src/FileComparer -- -i samples/input.txt -o samples/output-success.txt -c PersonNumber
+dotnet run -- -i samples/input.txt -o samples/output-success.txt -c PersonNumber
 ```
 
 Anything not passed on the command line is read from `appsettings.json`, and anything still missing
 is prompted for, so this works too:
 
 ```bash
-dotnet run --project src/FileComparer
+dotnet run
 ```
 
 ```
@@ -103,12 +103,11 @@ with the other readers.
 ## Layout
 
 ```
-src/FileComparer/
-  Program.cs                     entry point: config, prompts, run, exit code
-  Configuration/                 appsettings.json binding and command-line parsing
-  Model/DataTable.cs             format-independent table of string values
-  Readers/                       one reader per format + the shared TableBuilder
-  Comparison/                    key-based row pairing and value comparison
-  Reporting/ConsoleReport.cs     console output
-samples/                         sample input/output files for the success and fail cases
+Program.cs                     entry point: config, prompts, run, exit code
+Configuration/                 appsettings.json binding and command-line parsing
+Model/DataTable.cs             format-independent table of string values
+Readers/                       one reader per format + the shared TableBuilder
+Comparison/                    key-based row pairing and value comparison
+Reporting/ConsoleReport.cs     console output
+samples/                       sample input/output files for the success and fail cases
 ```
